@@ -1,11 +1,13 @@
 #include "so_long.h"
 
-void	map_parser()
+int	line_count(int fd)
 {
-
 }
 
-void	map_reader(char	*map)
+void	map_reader(int	fd)
 {
+}
 
+int	main(void)
+{
 }
