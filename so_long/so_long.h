@@ -29,9 +29,16 @@ t_map	*ft_lstlast_cust(t_map *lst);
 void	ft_lst_add_line(t_map **map, t_map *new_map_line);
 
 // MAP
-int	map_checker(t_map *map);
+int	map_checker(t_map *map, int len);
 t_map	*map_reader(int fd);
 void	map_parsing();
 void	map_printer(t_map *map);
+void	first_n_last_check(char *line, t_map_checker_flags *flags);
+void    line_len_check(int len, char *line, t_map_checker_flags *flags);
+void    flags_struct_init(t_map_checker_flags *flags);
+void    is_allowed_char(char c, t_map_checker_flags *flags);
+void    wall_checker(char c, t_map_checker_flags *flags);
 
+// ERRORS
+int     error_map_display(t_map_checker_flags flags);
 #endif
