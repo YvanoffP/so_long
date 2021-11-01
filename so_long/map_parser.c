@@ -9,7 +9,8 @@ void	map_printer(t_map *map)
 	}
 
 }
-void	map_reader(int fd)
+
+t_map	*map_reader(int fd)
 {
 	char	*map_line;
 	t_map	*map;
@@ -25,10 +26,18 @@ void	map_reader(int fd)
 		map_line = get_next_line(fd);
 	}
 	map_printer(map);
+	return (map);
 }
 
+void	map_parsing()
+{
+	t_map	*map;
+	
+	map = map_reader(open("../maps/map1.ber", O_RDONLY));
+	//map_checker();
+}
 int	main(void)
 {
-	map_reader(open("../maps/map1.ber", O_RDONLY));
+	map_parsing();
 	return(1);
 }
