@@ -1,6 +1,16 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+typedef struct	s_map_checker_flags
+{
+	int	e;
+	int	c;
+	int	p;
+	int	char_error;
+	int	wall_error;
+	int	size_error;
+}		t_map_checker_flags;
+
 typedef struct	s_map
 {
 	char		*map_line;
