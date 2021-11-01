@@ -33,8 +33,9 @@ void	map_parsing()
 {
 	t_map	*map;
 	
-	map = map_reader(open("../maps/map1.ber", O_RDONLY));
-	//map_checker();
+	map = map_reader(open("../maps/map_error_no_e.ber", O_RDONLY));
+	if (map_checker(map) != 0)
+		return ;;
 }
 int	main(void)
 {
