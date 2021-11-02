@@ -1,51 +1,53 @@
-NAME		=	so_long.out
-CC		=	gcc
-FLAGS		=	-Wall -Wextra -Werror
-MLX		=	mlx/Makefile.gen
-LFT		=	libft/libft.a
-INC		=	-I ./get_next_line -I ./inc -I ./libft -I ./mlx
-LIB		=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
-OBJ		=	$(patsubst src%, obj%, $(SRC:.c=.o))
+NAME			=	so_long
 
-SRC		=	src/map_checker.c \
-			src/lst_func.c \
-			src/map_checker_utils.c \
-			src/display_error.c \
+SRCS		=	map_checker.c \
+			lst_func.c \
+			map_checker_utils.c \
+			display_error.c \
 			get_next_line/get_next_line.c \
 			get_next_line/get_next_line_utils.c \
-			src/so_long.c
+			so_long.c
 
-all:			$(MLX) $(LFT) obj $(NAME)
+OBJS			=	${addprefix src/,${SRCS:.c=.o}}
 
-$(NAME):		$(OBJ)
-			$(CC) $(FLAGS) -fsanitize=address -o $@ $^ $(LIB)
+LD_FLAGS		=	-L libft -L mlx
 
-$(MLX):
-			@echo " [ .. ] | Compiling minilibx.."
-			@make -s -C mlx
-			@echo " [ OK ] | Minilibx ready!"
+MLX_FLAGS		=	-lm -lmlx -framework OpenGL -framework AppKit
 
-$(LFT):		
-			@echo " [ .. ] | Compiling libft.."
-			@make -s -C libft
-			@echo " [ OK ] | Libft ready!"
+HEAD			=	-I includes -I libft -I mlx
 
-obj:
-			@mkdir -p obj
+CC			=	clang
 
-obj/%.o:		src/%.c
-			$(CC) $(FLAGS) $(INC) -o $@ -c $<
+CFLAGS			=	-Wall -Werror -Wextra -g #-fsanitize=address
 
-clean:
-			@make -s $@ -C libft
-			@rm -rf $(OBJ) obj
-			@echo "object files removed."
+.c.o			:
+					${CC} ${CFLAGS} ${HEAD} -c $< -o ${<:.c=.o}
 
-fclean:			clean
-			@make -s $@ -C libft
-			@rm -rf $(NAME)
-			@echo "binary file removed."
+$(NAME)			:	${OBJS}
+					make -C libft
+					make -C mlx
+					${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS} -o ${NAME} -lft ${MLX_FLAGS}
 
-re:			fclean all
+all				:	${NAME}
 
-.PHONY:		all clean fclean re
+
+val				:	${NAME}
+					valgrind \
+					--leak-check=full --tool=memcheck \
+					--show-reachable=yes \
+					--track-fds=yes \
+					--errors-for-leak-kinds=all \
+					--show-leak-kinds=all ./${NAME}
+
+clean			:
+					make clean -C libft
+					make clean -C mlx
+					@rm -rf ${OBJS}
+
+fclean			:	clean
+					make fclean -C libft
+					@rm -rf ${NAME}
+
+re				:	fclean all
+
+.PHONY			:	all clean fclean re
