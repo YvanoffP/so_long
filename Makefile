@@ -7,13 +7,13 @@ INC		=	-I ./get_next_line -I ./inc -I ./libft -I ./mlx
 LIB		=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
 OBJ		=	$(patsubst src%, obj%, $(SRC:.c=.o))
 
-SRC		=	so_long/map_checker.c \
-			so_long/lst_func.c \
-			so_long/map_checker_utils.c \
-			so_long/display_error.c \
+SRC		=	src/map_checker.c \
+			src/lst_func.c \
+			src/map_checker_utils.c \
+			src/display_error.c \
 			get_next_line/get_next_line.c \
 			get_next_line/get_next_line_utils.c \
-			so_long/so_long.c
+			src/so_long.c
 
 all:			$(MLX) $(LFT) obj $(NAME)
 
