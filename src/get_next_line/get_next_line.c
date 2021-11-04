@@ -6,7 +6,7 @@
 /*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 21:53:21 by ypetruzz          #+#    #+#             */
-/*   Updated: 2021/10/23 14:23:09 by ypetruzz         ###   ########.fr       */
+/*   Updated: 2021/11/04 20:00:48 by ypetruzz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ static char	*extract(char **save, int read_count)
 	int		size;
 
 	if (!**save)
+	{
 		free(*save);
-	if (!**save)
 		return (NULL);
+	}
 	size = newline_index(*save) + 1;
 	if (size == 0)
 		size = ft_strlen(*save);
