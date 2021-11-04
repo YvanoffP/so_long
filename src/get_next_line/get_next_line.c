@@ -69,7 +69,7 @@ static void	append(char **save, char *read_buffer, int read_count)
 char	*get_next_line(int fd)
 {
 	static char	*save = NULL;
-	char		read_buffer[5000 + 1];
+	char		read_buffer[512 + 1];
 	int			read_count;
 	int			index;
 
@@ -81,7 +81,7 @@ char	*get_next_line(int fd)
 		index = newline_index(save);
 		if (index > -1)
 			break ;
-		read_count = read(fd, read_buffer, 5000);
+		read_count = read(fd, read_buffer, 512);
 		if (read_count == 0)
 			break ;
 		if (!save)

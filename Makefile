@@ -1,53 +1,73 @@
-NAME			=	so_long
+NAME = so_long
 
-SRCS		=	map_checker.c \
-			lst_func.c \
-			map_checker_utils.c \
-			display_error.c \
-			get_next_line/get_next_line.c \
-			get_next_line/get_next_line_utils.c \
-			so_long.c
+SRCS = 	so_long.c \
+	display_error.c \
+	lst_func.c \
+	map_checker.c \
+	map_checker_utils.c \
+	map_parser.c \
+	get_next_line/get_next_line.c \
+	get_next_line/get_next_line_utils.c
 
-OBJS			=	${addprefix src/,${SRCS:.c=.o}}
+SRCS_DIR = src
 
-LD_FLAGS		=	-L libft -L mlx
+OBJS = $(SRCS:.c=.o)
+OBJS_DIR = obj
+DIRS = obj obj/get_next_line
 
-MLX_FLAGS		=	-lm -lmlx -framework OpenGL -framework AppKit
+_SRCS= $(addprefix $(SRCS_DIR)/, $(SRCS))
+_OBJS = $(addprefix $(OBJS_DIR)/, $(OBJS))
 
-HEAD			=	-I includes -I libft -I mlx
+HEADERS = src
+MLX_DIR = mlx
+LIBFT = libft.a
+LIBFT_DIR = libft
 
-CC			=	clang
+CC = clang
+CFLAGS = -g -fsanitize=address -I $(HEADERS)
+LFLAGS = $(CFLAGS) -lmlx -framework OpenGL -framework AppKit -L $(MLX_DIR) #-fsanitize=address -g
 
-CFLAGS			=	-Wall -Werror -Wextra -g #-fsanitize=address
+UNAME = $(shell uname -s)
+ifeq ($(UNAME), Linux)
+    LFLAGS = $(CFLAGS) -lmlx -lXext -lX11 -lm -L $(MLX_DIR)
+endif
 
-.c.o			:
-					${CC} ${CFLAGS} ${HEAD} -c $< -o ${<:.c=.o}
+.PHONY : all mlx mlx_clean clean fclean re
 
-$(NAME)			:	${OBJS}
-					make -C libft
-					make -C mlx
-					${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS} -o ${NAME} -lft ${MLX_FLAGS}
+all: $(NAME)
 
-all				:	${NAME}
+$(NAME): $(_OBJS)
+	$(CC) $(_OBJS) $(LIBFT_DIR)/$(LIBFT) $(LFLAGS) -o $(NAME)
 
+$(_OBJS): $(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c $(DIRS) $(LIBFT_DIR)/$(LIBFT) mlx
+	$(CC) -c $(CFLAGS) $< -o $@
 
-val				:	${NAME}
-					valgrind \
-					--leak-check=full --tool=memcheck \
-					--show-reachable=yes \
-					--track-fds=yes \
-					--errors-for-leak-kinds=all \
-					--show-leak-kinds=all ./${NAME}
+$(LIBFT_DIR)/$(LIBFT):
+			$(MAKE) -C $(LIBFT_DIR) all
+			$(MAKE) -C $(LIBFT_DIR) bonus
+			cp $(LIBFT_DIR)/libft.h $(HEADERS)/libft.h
 
-clean			:
-					make clean -C libft
-					make clean -C mlx
-					@rm -rf ${OBJS}
+mlx:
+			@echo "=========== Compiling MinilibX ==========="
+			$(MAKE) -C $(MLX_DIR)
+			cp $(MLX_DIR)/mlx.h $(HEADERS)/mlx.h
+			@echo "========= End Compiling MinilibX ========="
 
-fclean			:	clean
-					make fclean -C libft
-					@rm -rf ${NAME}
+mlx_clean:
+			@echo "=========== Compiling MinilibX ==========="
+			$(MAKE) -C $(MLX_DIR) clean
+			rm $(HEADERS)/mlx.h
+			@echo "========= End Compiling MinilibX ========="
 
-re				:	fclean all
+$(DIRS):
+			mkdir -p $(DIRS)
 
-.PHONY			:	all clean fclean re
+clean:
+			rm -rf $(OBJS_DIR)
+			$(MAKE) -C $(LIBFT_DIR) clean
+
+fclean:
+			rm -rf $(OBJS_DIR) $(NAME)
+			$(MAKE) -C $(LIBFT_DIR) fclean
+
+re: fclean all

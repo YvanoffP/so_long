@@ -32,8 +32,10 @@ t_map	*map_reader(int fd)
 void	map_parsing()
 {
 	t_map	*map;
+	int	fd;
 		
-	map = map_reader(open("../maps/map2.ber", O_RDONLY)); // TODO if invalid FD display an error
+	fd = open("../maps/map2.ber", O_RDONLY);
+	map = map_reader(fd); // TODO if invalid FD display an error
 	if (map_checker(map, ft_strlen(map->map_line)) != 0)
 		return ;;
 }
