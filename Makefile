@@ -1,13 +1,13 @@
 NAME = so_long
 
 SRCS = 	so_long.c \
-	display_error.c \
-	lst_func.c \
-	map_checker.c \
-	map_checker_utils.c \
-	map_parser.c \
-	get_next_line/get_next_line.c \
-	get_next_line/get_next_line_utils.c
+		display_error.c \
+		lst_func.c \
+		map_checker.c \
+		map_checker_utils.c \
+		map_parser.c \
+		get_next_line/get_next_line.c \
+		get_next_line/get_next_line_utils.c
 
 SRCS_DIR = src
 

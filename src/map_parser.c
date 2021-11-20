@@ -41,8 +41,3 @@ void	map_parsing()
 	if (map_checker(map, ft_strlen(map->map_line)) != 0)
 		return ;
 }
-int	main(void)
-{
-	map_parsing();
-	return(1);
-}

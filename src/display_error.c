@@ -1,4 +1,4 @@
-#include "so_long.c"
+#include "so_long.h"
 
 int	error_map_display(t_map_checker_flags flags)
 {
