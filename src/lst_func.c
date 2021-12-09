@@ -25,6 +25,19 @@ t_map	*ft_lstlast_cust(t_map *lst)
 	return (lst);
 }
 
+int	ft_lstsize(t_list *lst)
+{
+	int	count;
+
+	count = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		count++;
+	}
+	return (count);
+}
+
 void	ft_lst_add_line(t_map **map, t_map *new_map_line)
 {
 	t_map	*tmp;
@@ -37,3 +50,5 @@ void	ft_lst_add_line(t_map **map, t_map *new_map_line)
 	else
 		*map = new_map_line;
 }
+
+void	ft_lst_size(

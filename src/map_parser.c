@@ -29,6 +29,11 @@ t_map	*map_reader(int fd)
 	return (map);
 }
 
+int	*lst_to_tab(t_map *map)
+{
+	
+}
+
 void	map_parsing()
 {
 	t_map	*map;

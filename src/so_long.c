@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-typedef struct	s_data {
+/*typedef struct	s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -27,4 +27,9 @@ int	main(void)
 	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_loop(vars.mlx);
+}
+*/
+int main(void)
+{
+	map_parsing();
 }
