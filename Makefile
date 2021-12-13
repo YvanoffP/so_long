@@ -7,7 +7,8 @@ SRCS = 	so_long.c \
 		manage_window.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
-		draw.c
+		draw.c \
+		hook.c
 
 SRCS_DIR = src
 

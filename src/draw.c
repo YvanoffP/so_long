@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	draw_map(t_game *game)
+void	game_init(t_game *game)
 {
 	int x = 0, y = 0;;
 
@@ -8,6 +8,7 @@ void	draw_map(t_game *game)
 	create_window(game);
 	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bits_pixel, &game->img.line_length, &game->img.endian);
 	texture_load(&game);
+	hook_init(game);
 	draw_frame(game);
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.img, x, y);
 	mlx_loop(game->mlx);
@@ -95,7 +96,7 @@ int	color_trans(t_img *tex, char *color)
 void	create_window(t_game *game)
 {
 	//mlx_get_screen_size(game->mlx, &game->screen_res.x, &game->screen_res.y);
-	game->screen_res.x = ft_strlen(*game->map) * 45;
+	game->screen_res.x = ft_strlen(*game->map) * 40;
 	game->screen_res.y = get_array_size(game->map) * 90;
 	game->size = get_size(game->screen_res, game->map);
 	game->screen_res.x = game->size * ft_strlen(*game->map);

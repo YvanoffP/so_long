@@ -10,6 +10,19 @@
 # include <sys/stat.h>
 # include "mlx.h"
 # include "get_next_line/get_next_line.h"
+# include "libft.h"
+
+# define ESCAPE 53
+# define UP 126
+# define DOWN 125
+# define RIGHT 124
+# define LEFT 123
+# define Z 6
+# define Q 12
+# define S 1
+# define D 0
+# define W 13
+# define A 2
 
 typedef struct	s_map
 {
@@ -44,33 +57,53 @@ typedef struct	s_game
 	void	*mlx;
 	void	*mlx_win;
 	int	size;
+	t_coord	player_pos;
 	t_coord	screen_res;
 	t_img	img;
 	t_img	wall;
 	t_img	player;
 	t_img	door;
 	t_img	item;
+
+	int	coin_count;
+	int	move_count;
 }				t_game;
 
 //Parsing_map
-char	**parsing_map(int argc, char **argv);
+char	**parsing_map(int argc, char **argv, t_game *game);
 void	check_wall(char **map, t_map data);
 void	check_wall_2(char **map, t_map data);
 void	check_wall_3(char **map, size_t len);
 void	write_error(void);
 
+//Clear
+void	clear_array(char **map);
+int	exit_game(t_game *map);
+
 //Check_error
 void	init(t_map *map, int lines);
-void	set_data(char *line, t_map *data);
-char	*get_line(int fd, t_map *data);
+void	set_data(char *line, t_map *data, t_game *game);
+char	*get_line(int fd, t_map *data, int i, t_game *game);
 void	check_data(t_map data);
-int	    count_lines(int argc, char **argv);
+int	count_lines(int argc, char **argv);
 
 //Manage window
 void	my_mlx_pixel_put(t_img *map, int x, int y, int color);
 
+//Hooks
+void	hook_init(t_game *game);
+int     keypress(int keycode, t_game *game);
+
+//Movements
+int     is_valid_position(t_game *game, t_coord next);
+void    move(t_game *game, t_coord next, char *str);
+void    move_player(t_game *game, int side);
+
+
+//Init
+void	game_init(t_game *game);
+
 //Draw
-void	draw_map(t_game *game);
 void	texture_load(t_game **game);
 char    *get_sprite_color(t_img *tex, int x, int y, int cubesize);
 void	draw(t_game *game, int x, int y);
