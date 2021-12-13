@@ -1,4 +1,4 @@
-#include "so_long.c"
+#include "so_long.h"
 
 int	my_mlx_pixel_get(t_img t, int x, int y)
 {
@@ -9,7 +9,6 @@ int	my_mlx_pixel_get(t_img t, int x, int y)
 	color = int_addr[y * t.width + (x * t.width)];
 	return (color);
 }
-
 
 int	color_trans(t_img *tex, char *color)
 {
