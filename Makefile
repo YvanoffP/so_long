@@ -11,6 +11,7 @@ SRCS = 	so_long.c \
 		draw_1.c \
 		draw_2.c \
 		move.c \
+		init.c \
 		hook.c
 
 SRCS_DIR = src

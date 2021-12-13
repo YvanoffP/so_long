@@ -64,7 +64,6 @@ typedef struct	s_game
 	t_img	player;
 	t_img	door;
 	t_img	item;
-
 	int	coin_count;
 	int	move_count;
 }				t_game;
@@ -78,7 +77,7 @@ void	write_error(void);
 
 //Clear
 void	clear_array(char **map);
-int	    exit_game(t_game *map);
+int	exit_game(t_game *map);
 
 //Check_error
 void	init(t_map *map, int lines);
@@ -101,21 +100,24 @@ void    move(t_game *game, t_coord next, char *str);
 void    move_player(t_game *game, int side);
 void    write_move(t_game *game, char *str);
 
-
 //Init
 void	game_init(t_game *game);
+void    init_struct(t_game *game, int argc, char **argv);
+t_game	*save_window(t_game *game);
 
 //Draw
 void	texture_load(t_game **game);
 char    *get_sprite_color(t_img *tex, int x, int y, int cubesize);
 void	load_one_texture(t_game *game, t_img *tex, char *path);
 void	draw(t_game *game, int x, int y);
+
 //Draw_1
 t_img	*texture_choice(t_game *game, char c);
 int     get_size(t_coord res, char **map);
 void	draw_frame(t_game *game);
 void    create_window(t_game *game);
 int     get_array_size(char **map);
+
 //Draw_2
 int     my_mlx_pixel_get(t_img t, int x, int y);
 int     color_trans(t_img *tex, char *color);

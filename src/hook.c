@@ -18,10 +18,10 @@ int	redraw(t_game *game)
 	return (1);
 }
 
-
 void	hook_init(t_game *game)
 {
-	//mlx_hook(game->mlx_win, 2, 1L<<0, exit_game, game);
+	mlx_hook(game->mlx_win, 17, 1L<<0, exit_game, game);
 	mlx_loop_hook(game->mlx, redraw, game);
-	mlx_key_hook(game->mlx_win, keypress, game);
+	mlx_hook(game->mlx_win, 2, (1L << 0), keypress, game);
+	mlx_do_key_autorepeaton(game->mlx);
 }
