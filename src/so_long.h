@@ -122,6 +122,4 @@ void	draw_frame(t_game *game);
 void    create_window(t_game *game);
 int     get_array_size(char **map);
 
-//Draw_2
-
 #endif
