@@ -9,7 +9,7 @@ SRCS = 	so_long.c \
 		get_next_line/get_next_line_utils.c \
 		draw.c \
 		draw_1.c \
-		draw_2.c \
+		textures.c \
 		move.c \
 		init.c \
 		hook.c
