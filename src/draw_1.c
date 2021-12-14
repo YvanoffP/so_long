@@ -69,18 +69,3 @@ void	draw_frame(t_game *game)
 		y++;
 	}
 }
-
-t_img	*texture_choice(t_game *game, char c)
-{
-	if (c == 'P')
-		return (&game->player);
-	else if (c == '1')
-		return (&game->wall);
-	else if (c == 'E')
-		return (&game->door);
-	else if (c == 'C')
-		return (&game->item);
-	else if (c == '0')
-		return (NULL);
-	return (NULL);
-}

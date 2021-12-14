@@ -1,5 +1,32 @@
 #include "so_long.h"
 
+int	my_mlx_pixel_get(t_img t, int x, int y)
+{
+	int	color;
+	int	*int_addr;
+
+	int_addr = (int *)t.addr;
+	color = int_addr[y * t.width + (x * t.width)];
+	return (color);
+}
+
+int	color_trans(t_img *tex, char *color)
+{
+	int		transparancy;
+	int		actual;
+	int		background;
+
+	background = 0xFFFFFF;
+	if (!tex)
+		return (background);
+	transparancy = my_mlx_pixel_get(*tex, 0, 0);
+	actual = *(int *)color;
+	if (actual == transparancy)
+		return (background);
+	else
+		return (actual);
+}
+
 void	draw(t_game *game, int x, int y)
 {
 	t_coord	pos;
@@ -22,20 +49,6 @@ void	draw(t_game *game, int x, int y)
 		}
 		pos.y++;
 	}
-}
-
-void	texture_load(t_game **game)
-{
-	load_one_texture(*game, &(*game)->player, "./img/player.xpm");
-	load_one_texture(*game, &(*game)->wall, "./img/wall.xpm");
-	load_one_texture(*game, &(*game)->door, "./img/door.xpm");
-	load_one_texture(*game, &(*game)->item, "./img/item.xpm");
-}
-
-void	load_one_texture(t_game *game, t_img *tex, char *path)
-{
-	tex->img = mlx_xpm_file_to_image(game->mlx, path, &tex->width, &tex->height);
-	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_pixel, &tex->line_length, &tex->endian);
 }
 
 char	*get_sprite_color(t_img *tex, int x, int y, int cubesize)
