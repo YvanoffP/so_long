@@ -1,9 +1,10 @@
 #include "so_long.h"
 
-void	my_mlx_pixel_put(t_img *map, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *sprite, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = map->addr + (y * map->line_length + x * (map->bits_pixel / 8));
+	//if (x && y) en gros, si x ou t vaut 0 on multiplie par 1 et pas par 0
+	dst = sprite->addr + (y * sprite->line_length + x * (sprite->bits_pixel / 8));
 	*(unsigned int*)dst = color;
-}
+}	iii
