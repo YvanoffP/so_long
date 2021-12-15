@@ -68,7 +68,7 @@ $(_OBJS): $(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c $(DIRS) $(LIBFT_DIR)/$(LIBFT) mlx
 	$(CC) -c $(CFLAGS) $< -o $@
 
 bonus:	$(_OBJS_BONUS)
-	$(CC) $(_OBJS_BONUS) $(LIBFT_DIR)/$(LIBFT) $(LFLAGS) -o $(NAME)_BONUS
+	$(CC) $(_OBJS_BONUS) $(LIBFT_DIR)/$(LIBFT) $(LFLAGS) -o $(NAME)_bonus
 
 $(_OBJS_BONUS): $(OBJS_BONUS_DIR)/%.o : $(SRCS_BONUS_DIR)/%.c $(DIRS_BONUS) $(LIBFT_DIR)/$(LIBFT) mlx
 	$(CC) -c $(CFLAGS) $< -o $@
@@ -98,10 +98,12 @@ $(DIRS_BONUS):
 
 clean:
 			rm -rf $(OBJS_DIR)
+			rm -rf $(OBJS_BONUS_DIR)
 			$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean:
 			rm -rf $(OBJS_DIR) $(NAME)
+			rm -rf $(OBJS_BONUS_DIR) $(NAME)_bonus
 			$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
