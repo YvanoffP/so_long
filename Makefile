@@ -107,4 +107,4 @@ fclean:
 			$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
-.PHONY : all mlx mlx_clean clean fclean re
+.PHONY : all mlx bonus mlx_clean clean fclean re
