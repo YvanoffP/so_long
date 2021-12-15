@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	my_mlx_pixel_put(t_img *map, int x, int y, int color)
 {

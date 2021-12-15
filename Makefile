@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = 	so_long.c \
+SRCS = 		so_long.c \
 		check_error.c \
 		parsing_map.c \
 		clear.c \
@@ -14,14 +14,36 @@ SRCS = 	so_long.c \
 		init.c \
 		hook.c
 
+SRCS_BONUS = 	so_long_bonus.c \
+		check_error_bonus.c \
+		parsing_map_bonus.c \
+		clear_bonus.c \
+		manage_window_bonus.c \
+		get_next_line/get_next_line.c \
+		get_next_line/get_next_line_utils.c \
+		draw_bonus.c \
+		draw_1_bonus.c \
+		textures_bonus.c \
+		move_bonus.c \
+		init_bonus.c \
+		hook_bonus.c
+
 SRCS_DIR = src
+SRCS_BONUS_DIR = bonus
 
 OBJS = $(SRCS:.c=.o)
 OBJS_DIR = obj
 DIRS = obj obj/get_next_line
 
-_SRCS= $(addprefix $(SRCS_DIR)/, $(SRCS))
+BONUS_OBJS = $(SRCS_BONUS:.c=.o)
+OBJS_BONUS_DIR = obj_bonus
+DIRS_BONUS = obj_bonus obj_bonus/get_next_line
+
+_SRCS =  $(addprefix $(SRCS_DIR)/, $(SRCS))
 _OBJS = $(addprefix $(OBJS_DIR)/, $(OBJS))
+
+_SRCS_BONUS =  $(addprefix $(SRCS_BONUS_DIR)/, $(SRCS_BONUS))
+_OBJS_BONUS = $(addprefix $(OBJS_BONUS_DIR)/, $(BONUS_OBJS))
 
 HEADERS = src
 MLX_DIR = mlx
@@ -45,6 +67,12 @@ $(NAME): $(_OBJS)
 $(_OBJS): $(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c $(DIRS) $(LIBFT_DIR)/$(LIBFT) mlx
 	$(CC) -c $(CFLAGS) $< -o $@
 
+bonus:	$(_OBJS_BONUS)
+	$(CC) $(_OBJS_BONUS) $(LIBFT_DIR)/$(LIBFT) $(LFLAGS) -o $(NAME)_BONUS
+
+$(_OBJS_BONUS): $(OBJS_BONUS_DIR)/%.o : $(SRCS_BONUS_DIR)/%.c $(DIRS_BONUS) $(LIBFT_DIR)/$(LIBFT) mlx
+	$(CC) -c $(CFLAGS) $< -o $@
+
 $(LIBFT_DIR)/$(LIBFT):
 			$(MAKE) -C $(LIBFT_DIR) all
 			$(MAKE) -C $(LIBFT_DIR) bonus
@@ -64,6 +92,9 @@ mlx_clean:
 
 $(DIRS):
 			mkdir -p $(DIRS)
+
+$(DIRS_BONUS):
+			mkdir -p $(DIRS_BONUS)
 
 clean:
 			rm -rf $(OBJS_DIR)

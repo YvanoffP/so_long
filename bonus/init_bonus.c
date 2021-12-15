@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	init_struct(t_game *game, int argc, char **argv)
 {

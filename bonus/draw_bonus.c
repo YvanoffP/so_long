@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	my_mlx_pixel_get(t_img t, int x, int y)
 {

@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 char	**parsing_map(int argc, char **argv,t_game *game)
 {
