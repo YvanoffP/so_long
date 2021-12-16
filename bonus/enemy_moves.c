@@ -1,4 +1,4 @@
-#include "so_long_bonus"
+#include "so_long_bonus.h"
 
 int	enemy_next_move(t_game *game, int next_x)
 {

@@ -54,6 +54,8 @@ void	move(t_game *game, t_coord next, char *str)
 		{
 			if (game->map[next.y][next.x] == 'C')
 				game->coin_count--;
+			if (game->coin_count == 0)
+				game->sprite.door = game->sprite.door_2;
 			game->map[next.y][next.x] = 'P';
 			game->map[game->player_pos.y][game->player_pos.x] = '0';
 			game->player_pos.x = next.x;
@@ -72,6 +74,28 @@ int	is_valid_position(t_game *game, t_coord next)
 	return (out);
 }
 
+void    print_move(t_game *game)
+{
+	int        color;
+	char	*move_count;
+	int        x;
+    	int        y;
+
+	y = 0;
+	while (y < 25 && y < game->screen_res.y)
+	{
+		x = 0;
+		while (x < 100 && x < game->screen_res.x)
+			my_mlx_pixel_put(&game->img, x++, y, 0x00000000);
+		y++;
+	}
+	move_count = ft_itoa(game->move_count);
+	color = 0x00FF0000;
+	mlx_string_put(game->mlx, game->mlx_win, 10, 17, color, "Moves: ");
+	mlx_string_put(game->mlx, game->mlx_win, 60, 17, color, move_count);
+	free(move_count);
+}
+
 void	write_move(t_game *game, char *str)
 {
 	ft_putstr_fd("                                ", STDOUT_FILENO);
@@ -81,5 +105,6 @@ void	write_move(t_game *game, char *str)
 	ft_putnbr_fd(++game->move_count, STDOUT_FILENO);
 	ft_putstr_fd("\r", STDOUT_FILENO);
 	draw_frame(game);
+	print_move(game);
 	redraw(game);
 }

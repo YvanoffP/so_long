@@ -106,6 +106,7 @@ void	my_mlx_pixel_put(t_img *map, int x, int y, int color);
 void	hook_init(t_game *game);
 int     keypress(int keycode, t_game *game);
 int     redraw(t_game *game);
+void    anim(t_game *game, int *i);
 
 //Move
 int     is_valid_position(t_game *game, t_coord next);
@@ -113,6 +114,7 @@ void    move(t_game *game, t_coord next, char *str);
 void    move_player(t_game *game, int side);
 void    write_move(t_game *game, char *str);
 void    move_enemy(t_game *game);
+void    print_move(t_game *game);
 
 //Init
 void	game_init(t_game *game);

@@ -12,7 +12,7 @@ int	keypress(int keycode, t_game *game)
 	return (keycode);
 }
 
-static void	anim(t_game *game, int *i)
+void	anim(t_game *game, int *i)
 {
 	static int	flag = 0;
 
@@ -22,18 +22,17 @@ static void	anim(t_game *game, int *i)
 		{
 			game->sprite.player = game->sprite.player_1;
 			game->sprite.item = game->sprite.item_1;
-			game->sprite.door = game->sprite.door_1;
 			flag = 1;
 		}
 		else if (flag == 1)
 		{
 			game->sprite.player = game->sprite.player_2;
 			game->sprite.item = game->sprite.item_2;
-			game->sprite.door = game->sprite.door_2;
 			flag = 0;
 		}
 		move_enemy(game);
 		draw_frame(game);
+		print_move(game);
 		*i = 0;
 	}
 }
@@ -45,6 +44,7 @@ int	redraw(t_game *game)
 	anim(game, &i);
 	i++;
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.img, 0, 0);
+	print_move(game);
 	return (1);
 }
 

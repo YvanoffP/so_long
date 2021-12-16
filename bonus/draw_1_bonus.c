@@ -41,7 +41,6 @@ int	get_size(t_coord res, char **map)
 
 void	create_window(t_game *game)
 {
-	//mlx_get_screen_size(game->mlx, &game->screen_res.x, &game->screen_res.y);
 	game->screen_res.x = ft_strlen(*game->map) * 40;
 	game->screen_res.y = get_array_size(game->map) * 40;
 	game->size = get_size(game->screen_res, game->map);
