@@ -44,28 +44,33 @@ typedef struct	s_img
 {
 	void	*img;
 	char	*addr;
-	int		bits_pixel;
-	int		line_length;
-	int		endian;
-	int		height;
-	int		width;
-}				t_img;
+	int	bits_pixel;
+	int	line_length;
+	int	endian;
+	int	height;
+	int	width;
+}		t_img;
 
-typedef struct	s_game
+typedef struct s_sprite
 {
-	char	**map;
-	void	*mlx;
-	void	*mlx_win;
-	int	size;
-	t_coord	player_pos;
-	t_coord	screen_res;
-	t_img	img;
 	t_img	wall;
 	t_img	player;
 	t_img	door;
 	t_img	item;
-	int	coin_count;
-	int	move_count;
+}		t_sprite;
+
+typedef struct	s_game
+{
+	char		**map;
+	void		*mlx;
+	void		*mlx_win;
+	int		size;
+	t_coord		player_pos;
+	t_coord		screen_res;
+	t_img		img;
+	t_sprite	sprite;
+	int		coin_count;
+	int		move_count;
 }				t_game;
 
 //Parsing_map

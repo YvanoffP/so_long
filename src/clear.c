@@ -23,10 +23,10 @@ int	exit_game(t_game *game)
 {
 	game = save_window(NULL);
 	mlx_destroy_image(game->mlx, game->img.img);
-	mlx_destroy_image(game->mlx, game->player.img);
-	mlx_destroy_image(game->mlx, game->item.img);
-	mlx_destroy_image(game->mlx, game->wall.img);
-	mlx_destroy_image(game->mlx, game->door.img);
+	mlx_destroy_image(game->mlx, game->sprite.player.img);
+	mlx_destroy_image(game->mlx, game->sprite.item.img);
+	mlx_destroy_image(game->mlx, game->sprite.wall.img);
+	mlx_destroy_image(game->mlx, game->sprite.door.img);
 	mlx_destroy_window(game->mlx, game->mlx_win);
 	clear_array(game->map);
 	free(game->mlx);

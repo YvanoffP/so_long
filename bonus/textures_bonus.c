@@ -2,10 +2,10 @@
 
 void	texture_load(t_game **game)
 {
-	load_one_texture(*game, &(*game)->player, "./img/player.xpm");
-	load_one_texture(*game, &(*game)->wall, "./img/wall.xpm");
-	load_one_texture(*game, &(*game)->door, "./img/door.xpm");
-	load_one_texture(*game, &(*game)->item, "./img/item.xpm");
+	load_one_texture(*game, &(*game)->sprite.player, "./img/player.xpm");
+	load_one_texture(*game, &(*game)->sprite.wall, "./img/wall.xpm");
+	load_one_texture(*game, &(*game)->sprite.door, "./img/door.xpm");
+	load_one_texture(*game, &(*game)->sprite.item, "./img/item.xpm");
 }
 
 void	load_one_texture(t_game *game, t_img *tex, char *path)
@@ -17,13 +17,13 @@ void	load_one_texture(t_game *game, t_img *tex, char *path)
 t_img	*texture_choice(t_game *game, char c)
 {
 	if (c == 'P')
-		return (&game->player);
+		return (&game->sprite.player);
 	else if (c == '1')
-		return (&game->wall);
+		return (&game->sprite.wall);
 	else if (c == 'E')
-		return (&game->door);
+		return (&game->sprite.door);
 	else if (c == 'C')
-		return (&game->item);
+		return (&game->sprite.item);
 	else if (c == '0')
 		return (NULL);
 	return (NULL);
