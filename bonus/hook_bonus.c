@@ -14,6 +14,18 @@ int	keypress(int keycode, t_game *game)
 
 int	redraw(t_game *game)
 {
+	static int	i = 0;
+
+	if (i == 0)
+	{
+		game->sprite.player = game->sprite.player_1;
+		i = 1;
+	}
+	else if (i != 0)
+	{
+		game->sprite.player = game->sprite.player_2;
+		i = 0;
+	}
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.img, 0, 0);
 	return (1);
 }

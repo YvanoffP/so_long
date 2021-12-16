@@ -2,10 +2,12 @@
 
 void	texture_load(t_game **game)
 {
-	load_one_texture(*game, &(*game)->sprite.player, "./img/player.xpm");
+	load_one_texture(*game, &(*game)->sprite.player_1, "./img/player_1.xpm");
+	load_one_texture(*game, &(*game)->sprite.player_2, "./img/player_2.xpm");
 	load_one_texture(*game, &(*game)->sprite.wall, "./img/wall.xpm");
 	load_one_texture(*game, &(*game)->sprite.door, "./img/door.xpm");
 	load_one_texture(*game, &(*game)->sprite.item, "./img/item.xpm");
+	(*game)->sprite.player = (*game)->sprite.player_1;
 }
 
 void	load_one_texture(t_game *game, t_img *tex, char *path)
