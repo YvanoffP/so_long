@@ -5,9 +5,14 @@ void	texture_load(t_game **game)
 	load_one_texture(*game, &(*game)->sprite.player_1, "./img/player_1.xpm");
 	load_one_texture(*game, &(*game)->sprite.player_2, "./img/player_2.xpm");
 	load_one_texture(*game, &(*game)->sprite.wall, "./img/wall.xpm");
-	load_one_texture(*game, &(*game)->sprite.door, "./img/door.xpm");
-	load_one_texture(*game, &(*game)->sprite.item, "./img/item.xpm");
+	load_one_texture(*game, &(*game)->sprite.door_1, "./img/door_1.xpm");
+	load_one_texture(*game, &(*game)->sprite.door_2, "./img/door_2.xpm");
+	load_one_texture(*game, &(*game)->sprite.item_1, "./img/item_1.xpm");
+	load_one_texture(*game, &(*game)->sprite.item_2, "./img/item_2.xpm");
+	load_one_texture(*game, &(*game)->sprite.enemy, "./img/enemy.xpm");
 	(*game)->sprite.player = (*game)->sprite.player_1;
+	(*game)->sprite.door = (*game)->sprite.door_1;
+	(*game)->sprite.item = (*game)->sprite.item_1;
 }
 
 void	load_one_texture(t_game *game, t_img *tex, char *path)
@@ -26,6 +31,8 @@ t_img	*texture_choice(t_game *game, char c)
 		return (&game->sprite.door);
 	else if (c == 'C')
 		return (&game->sprite.item);
+	else if (c == 'M')
+		return (&game->sprite.enemy);
 	else if (c == '0')
 		return (NULL);
 	return (NULL);

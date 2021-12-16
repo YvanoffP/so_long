@@ -43,6 +43,12 @@ void	move(t_game *game, t_coord next, char *str)
 			else
 				ft_putendl_fd("You must collect all coins before exiting !", STDOUT_FILENO);
 		}
+		if (game->map[next.y][next.x] == 'M')
+		{
+			ft_putstr_fd("                            \r", STDOUT_FILENO);
+			ft_putstr_fd("You died, avoid the monster !\n", STDOUT_FILENO);
+			exit_game(game);
+		}
 		if (game->map[next.y][next.x] == '0'
 			|| game->map[next.y][next.x] == 'C')
 		{

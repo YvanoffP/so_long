@@ -26,7 +26,8 @@ SRCS_BONUS = 	so_long_bonus.c \
 		textures_bonus.c \
 		move_bonus.c \
 		init_bonus.c \
-		hook_bonus.c
+		hook_bonus.c \
+		enemy_moves.c
 
 SRCS_DIR = src
 SRCS_BONUS_DIR = bonus

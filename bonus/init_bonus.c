@@ -11,6 +11,20 @@ void	init_struct(t_game *game, int argc, char **argv)
 	game->map = parsing_map(argc, argv, game);
 }
 
+static void	place_enemy(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (game->map[y][++x] != '0')
+		y++;
+	game->map[y][x] = 'M';
+	game->enemy_pos.x = x;
+	game->enemy_pos.y = y;
+}
+
 void	game_init(t_game *game)
 {
 	int x = 0, y = 0;;
@@ -19,6 +33,7 @@ void	game_init(t_game *game)
 	create_window(game);
 	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bits_pixel, &game->img.line_length, &game->img.endian);
 	save_window(game);
+	place_enemy(game);
 	texture_load(&game);
 	hook_init(game);
 	draw_frame(game);

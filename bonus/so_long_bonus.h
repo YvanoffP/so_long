@@ -54,11 +54,16 @@ typedef struct	s_img
 typedef struct s_sprite
 {
 	t_img	wall;
+	t_img	enemy;
 	t_img	player;
 	t_img	player_1;
 	t_img	player_2;
 	t_img	door;
+	t_img	door_1;
+	t_img	door_2;
 	t_img	item;
+	t_img	item_1;
+	t_img	item_2;
 }		t_sprite;
 
 typedef struct	s_game
@@ -67,6 +72,7 @@ typedef struct	s_game
 	void		*mlx;
 	void		*mlx_win;
 	int		size;
+	t_coord		enemy_pos;
 	t_coord		player_pos;
 	t_coord		screen_res;
 	t_img		img;
@@ -106,6 +112,7 @@ int     is_valid_position(t_game *game, t_coord next);
 void    move(t_game *game, t_coord next, char *str);
 void    move_player(t_game *game, int side);
 void    write_move(t_game *game, char *str);
+void    move_enemy(t_game *game);
 
 //Init
 void	game_init(t_game *game);
@@ -128,5 +135,9 @@ int     get_size(t_coord res, char **map);
 void	draw_frame(t_game *game);
 void    create_window(t_game *game);
 int     get_array_size(char **map);
+
+//Enemy moves
+void    move_enemy(t_game *game);
+int     enemy_next_move(t_game *game, int next_x);
 
 #endif
