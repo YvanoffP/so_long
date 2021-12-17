@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 14:35:48 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/12/17 14:41:07 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long_bonus.h"
 
 void	init_struct(t_game *game, int argc, char **argv)
@@ -8,7 +20,7 @@ void	init_struct(t_game *game, int argc, char **argv)
 	game->player_pos.y = 0;
 	game->coin_count = 0;
 	game->move_count = 0;
-	game->map = parsing_map(argc, argv, game);
+	parsing_map(argc, argv, game);
 }
 
 static void	place_enemy(t_game *game)
@@ -27,11 +39,16 @@ static void	place_enemy(t_game *game)
 
 void	game_init(t_game *game)
 {
-	int x = 0, y = 0;;
+	int	x;
+	int	y;
 
+	x = 0;
+	y = 0;
 	game->mlx = mlx_init();
 	create_window(game);
-	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bits_pixel, &game->img.line_length, &game->img.endian);
+	game->img.addr = mlx_get_data_addr(game->img.img,
+			&game->img.bits_pixel, &game->img.line_length,
+			&game->img.endian);
 	save_window(game);
 	place_enemy(game);
 	texture_load(&game);

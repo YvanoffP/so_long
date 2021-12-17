@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   enemy_moves.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 14:31:53 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/12/17 14:33:22 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long_bonus.h"
 
 int	enemy_next_move(t_game *game, int next_x)
@@ -20,13 +32,12 @@ static void	set_enemy_pos(t_game *game, int x)
 	game->map[game->enemy_pos.y][game->enemy_pos.x] = '0';
 	game->map[game->enemy_pos.y][x] = 'M';
 	game->enemy_pos.x = x;
-	
 }
 
 void	move_enemy(t_game *game)
 {
 	static int	flag = 0;
-	int		x;
+	int			x;
 
 	x = 0;
 	if (flag == 0)

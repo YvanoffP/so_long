@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   textures_bonus.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 14:43:54 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/12/17 14:44:10 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long_bonus.h"
 
 void	texture_load(t_game **game)
@@ -17,8 +29,10 @@ void	texture_load(t_game **game)
 
 void	load_one_texture(t_game *game, t_img *tex, char *path)
 {
-	tex->img = mlx_xpm_file_to_image(game->mlx, path, &tex->width, &tex->height);
-	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_pixel, &tex->line_length, &tex->endian);
+	tex->img = mlx_xpm_file_to_image(game->mlx, path,
+			&tex->width, &tex->height);
+	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_pixel,
+			&tex->line_length, &tex->endian);
 }
 
 t_img	*texture_choice(t_game *game, char c)

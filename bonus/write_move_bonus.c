@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   write_move_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 14:44:27 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/12/17 14:54:54 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long_bonus.h"
 
-void    print_move(t_game *game)
+void	print_move(t_game *game)
 {
-	int        color;
+	int		color;
 	char	*move_count;
-	int        x;
-		int        y;
+	int		x;
+	int		y;
 
 	y = 0;
 	while (y < 25 && y < game->screen_res.y)

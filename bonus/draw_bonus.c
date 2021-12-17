@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 14:31:06 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/12/17 14:31:40 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long_bonus.h"
 
 int	my_mlx_pixel_get(t_img t, int x, int y)
@@ -44,7 +56,8 @@ void	draw(t_game *game, int x, int y)
 			if (tex)
 				color = get_sprite_color(tex, pos.x, pos.y, 40);
 			if (color != NULL)
-				my_mlx_pixel_put(&game->img, (x * 40) + pos.x, (y * 40) + pos.y, color_trans(tex, color));
+				my_mlx_pixel_put(&game->img, (x * 40) + pos.x,
+					(y * 40) + pos.y, color_trans(tex, color));
 			pos.x++;
 		}
 		pos.y++;

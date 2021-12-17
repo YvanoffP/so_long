@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clear_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 14:26:43 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/12/17 14:28:23 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long_bonus.h"
 
 void	clear_array(char **map)
@@ -12,11 +24,11 @@ void	clear_array(char **map)
 
 t_game	*save_window(t_game *game)
 {
-	static t_game *game_backup = NULL;
+	static t_game	*game_backup = NULL;
 
 	if (game != NULL)
 		game_backup = game;
-	return (game_backup);	
+	return (game_backup);
 }
 
 int	exit_game(t_game *game)

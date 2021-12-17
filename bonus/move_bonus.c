@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 14:25:31 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/12/17 14:26:05 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long_bonus.h"
 
 void	move_player(t_game *game, int side)
@@ -36,7 +48,8 @@ void	move(t_game *game, t_coord next, char *str)
 			if (game->coin_count == 0)
 				winning_move(game, str);
 			else
-				ft_putendl_fd("You must collect all coins before exiting !", STDOUT_FILENO);
+				ft_putendl_fd("You must collect all coins before exiting !",
+					STDOUT_FILENO);
 		}
 		if (game->map[next.y][next.x] == 'M')
 			killed_move(game);
