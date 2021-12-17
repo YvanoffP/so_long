@@ -74,7 +74,7 @@ typedef struct	s_game
 }				t_game;
 
 //Parsing_map
-char	**parsing_map(int argc, char **argv, t_game *game);
+void    parsing_map(int argc, char **argv, t_game *game);
 void	check_wall(char **map, t_map data);
 void	check_wall_2(char **map, t_map data);
 void	check_wall_3(char **map, size_t len);
@@ -104,6 +104,7 @@ int     is_valid_position(t_game *game, t_coord next);
 void    move(t_game *game, t_coord next, char *str);
 void    move_player(t_game *game, int side);
 void    write_move(t_game *game, char *str);
+void	exec_move(t_game *game, t_coord next, char *str);
 
 //Init
 void	game_init(t_game *game);

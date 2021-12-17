@@ -8,7 +8,7 @@ void	init_struct(t_game *game, int argc, char **argv)
 	game->player_pos.y = 0;
 	game->coin_count = 0;
 	game->move_count = 0;
-	game->map = parsing_map(argc, argv, game);
+	parsing_map(argc, argv, game);
 }
 
 void	game_init(t_game *game)

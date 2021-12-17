@@ -48,13 +48,18 @@ void	move(t_game *game, t_coord next, char *str)
 		{
 			if (game->map[next.y][next.x] == 'C')
 				game->coin_count--;
-			game->map[next.y][next.x] = 'P';
-			game->map[game->player_pos.y][game->player_pos.x] = '0';
-			game->player_pos.x = next.x;
-			game->player_pos.y = next.y;
-			write_move(game, str);
+			exec_move(game, next, str);
 		}
 	}
+}
+
+void	exec_move(t_game *game, t_coord next, char *str)
+{
+		game->map[next.y][next.x] = 'P';
+		game->map[game->player_pos.y][game->player_pos.x] = '0';
+		game->player_pos.x = next.x;
+		game->player_pos.y = next.y;
+		write_move(game, str);
 }
 
 int	is_valid_position(t_game *game, t_coord next)

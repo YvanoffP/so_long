@@ -16,7 +16,7 @@ t_game	*save_window(t_game *game)
 
 	if (game != NULL)
 		game_backup = game;
-	return (game_backup);	
+	return (game_backup);
 }
 
 int	exit_game(t_game *game)
