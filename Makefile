@@ -86,24 +86,19 @@ $(NAME_BONUS): $(OBJ_BONUS)
 	@$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ_BONUS) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME_BONUS)
 	@echo $(G)Finished [$(NAME_BONUS)]$(X)
 
-bonus: $(OBJ_BONUS)
-	@echo $(Y)Compiling [$(SRCS_BONUS)]...$(X)
-	@echo $(G)Finished [$(SRCS_BONUS)]$(X)
-	@echo
-	@echo $(Y)Compiling [$(NAME_BONUS)]...$(X)
-	@$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ_BONUS) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME_BONUS)
-
+bonus: $(NAME_BONUS)
+	
 clean:
 	@make -C $(MLX_PATH) clean
 	@make -C $(LIBFT_PATH) clean
 	@rm -f $(OBJECTS) $(OBJ_BONUS)
 	@echo $(R)Removed [$(OBJECTS)]$(X)
+	@echo $(R)Removed [$(OBJ_BONUS)]$(X)
 
 fclean: clean
-	@make -C $(MLX_PATH) fclean
-	@make -C $(LIBFT_PATH) fclean
 	@rm -f $(NAME) $(NAME_BONUS)
 	@echo $(R)Removed [$(NAME)]$(X)
+	@echo $(R)Removed [$(NAME)_bonus]$(X)
 
 re: fclean all
 
