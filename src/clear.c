@@ -6,7 +6,7 @@
 /*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:43:27 by ypetruzz          #+#    #+#             */
-/*   Updated: 2021/12/17 14:04:01 by ypetruzz         ###   ########.fr       */
+/*   Updated: 2021/12/17 16:10:58 by ypetruzz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	clear_array(char **map)
 	int	i;
 
 	i = 0;
-	while (map[i++])
-		free(map[i]);
+	while (map[i])
+		free(map[i++]);
 	free(map);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:43:19 by ypetruzz          #+#    #+#             */
-/*   Updated: 2021/12/17 14:03:37 by ypetruzz         ###   ########.fr       */
+/*   Updated: 2021/12/17 16:11:00 by ypetruzz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	count_lines(int argc, char **argv)
 				return (nb_lines);
 			}
 			nb_lines++;
+			free(line);
 		}
 	}
 	return (nb_lines);
