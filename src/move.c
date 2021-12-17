@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 13:44:18 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/12/17 14:02:33 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	move_player(t_game *game, int side)
@@ -41,7 +53,8 @@ void	move(t_game *game, t_coord next, char *str)
 				exit_game(game);
 			}
 			else
-				ft_putendl_fd("You must collect all coins before exiting !", STDOUT_FILENO);
+				ft_putendl_fd("You must collect all coins before exiting !",
+					STDOUT_FILENO);
 		}
 		if (game->map[next.y][next.x] == '0'
 			|| game->map[next.y][next.x] == 'C')
@@ -55,11 +68,11 @@ void	move(t_game *game, t_coord next, char *str)
 
 void	exec_move(t_game *game, t_coord next, char *str)
 {
-		game->map[next.y][next.x] = 'P';
-		game->map[game->player_pos.y][game->player_pos.x] = '0';
-		game->player_pos.x = next.x;
-		game->player_pos.y = next.y;
-		write_move(game, str);
+	game->map[next.y][next.x] = 'P';
+	game->map[game->player_pos.y][game->player_pos.x] = '0';
+	game->player_pos.x = next.x;
+	game->player_pos.y = next.y;
+	write_move(game, str);
 }
 
 int	is_valid_position(t_game *game, t_coord next)

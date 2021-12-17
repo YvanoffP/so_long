@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_1.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 13:43:46 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/12/17 14:04:55 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	get_array_size(char **map)
@@ -13,8 +25,8 @@ int	get_array_size(char **map)
 int	get_size(t_coord res, char **map)
 {
 	t_coord	size;
-	int	len_line;
-	int	len_array;
+	int		len_line;
+	int		len_array;
 
 	len_line = ft_strlen(*map);
 	len_array = get_array_size(map);
@@ -46,8 +58,10 @@ void	create_window(t_game *game)
 	game->size = get_size(game->screen_res, game->map);
 	game->screen_res.x = game->size * ft_strlen(*game->map);
 	game->screen_res.y = game->size * get_array_size(game->map);
-	game->mlx_win = mlx_new_window(game->mlx, game->screen_res.x, game->screen_res.y, "so_long");
-	game->img.img = mlx_new_image(game->mlx, game->screen_res.x, game->screen_res.y);
+	game->mlx_win = mlx_new_window(game->mlx,
+			game->screen_res.x, game->screen_res.y, "so_long");
+	game->img.img = mlx_new_image(game->mlx,
+			game->screen_res.x, game->screen_res.y);
 }
 
 void	draw_frame(t_game *game)
