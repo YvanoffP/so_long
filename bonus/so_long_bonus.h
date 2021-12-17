@@ -112,9 +112,14 @@ void    anim(t_game *game, int *i);
 int     is_valid_position(t_game *game, t_coord next);
 void    move(t_game *game, t_coord next, char *str);
 void    move_player(t_game *game, int side);
-void    write_move(t_game *game, char *str);
 void    move_enemy(t_game *game);
+
+//Write move
+void    write_move(t_game *game, char *str);
 void    print_move(t_game *game);
+void	winning_move(t_game *game, char *str);
+void	killed_move(t_game *game, char *str);
+void    collect_coin_move(t_game *game, char *str, t_coord next);
 
 //Init
 void	game_init(t_game *game);

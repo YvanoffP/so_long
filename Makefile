@@ -27,6 +27,7 @@ SRCS_BONUS = 	so_long_bonus.c \
 		move_bonus.c \
 		init_bonus.c \
 		hook_bonus.c \
+		write_move.c \
 		enemy_moves.c
 
 SRCS_DIR = src

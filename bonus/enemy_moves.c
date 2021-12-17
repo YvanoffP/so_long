@@ -15,6 +15,12 @@ int	enemy_next_move(t_game *game, int next_x)
 	return (1);
 }
 
+static void	set_enemy_pos(t_game *game, int x)
+{
+	game->map[game->enemy_pos.y][game->enemy_pos.x] = '0';
+	game->map[game->enemy_pos.y][x] = 'M';
+}
+
 void	move_enemy(t_game *game)
 {
 	static int	flag = 0;
@@ -26,11 +32,7 @@ void	move_enemy(t_game *game)
 		if (!enemy_next_move(game, x))
 			flag = 1;
 		else
-		{
-			game->map[game->enemy_pos.y][game->enemy_pos.x] = '0';
-			game->map[game->enemy_pos.y][x] = 'M';
-			game->enemy_pos.x = x;
-		}
+			set_enemy_pos(game, x);
 	}
 	else if (flag == 1)
 	{
@@ -38,10 +40,7 @@ void	move_enemy(t_game *game)
 		if (!enemy_next_move(game, x))
 			flag = 0;
 		else
-		{
-			game->map[game->enemy_pos.y][x] = 'M';
-			game->map[game->enemy_pos.y][game->enemy_pos.x] = '0';
-			game->enemy_pos.x = x;
-		}
+			set_enemy_pos(game, x);
 	}
+	game->enemy_pos.x = x;
 }
