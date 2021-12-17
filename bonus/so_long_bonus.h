@@ -118,7 +118,7 @@ void    move_enemy(t_game *game);
 void    write_move(t_game *game, char *str);
 void    print_move(t_game *game);
 void	winning_move(t_game *game, char *str);
-void	killed_move(t_game *game, char *str);
+void	killed_move(t_game *game);
 void    collect_coin_move(t_game *game, char *str, t_coord next);
 
 //Init

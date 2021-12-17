@@ -39,7 +39,7 @@ void	move(t_game *game, t_coord next, char *str)
 				ft_putendl_fd("You must collect all coins before exiting !", STDOUT_FILENO);
 		}
 		if (game->map[next.y][next.x] == 'M')
-			killed_move(game, str);
+			killed_move(game);
 		if (game->map[next.y][next.x] == '0'
 			|| game->map[next.y][next.x] == 'C')
 			collect_coin_move(game, str, next);

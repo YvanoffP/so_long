@@ -43,7 +43,7 @@ void	winning_move(t_game *game, char *str)
 	exit_game(game);
 }
 
-void	killed_move(t_game *game, char *str)
+void	killed_move(t_game *game)
 {
 	ft_putstr_fd("                            \r", STDOUT_FILENO);
 	ft_putstr_fd("You died, avoid the monster !\n", STDOUT_FILENO);

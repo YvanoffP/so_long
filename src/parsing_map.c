@@ -12,8 +12,8 @@ void	parsing_map(int argc, char **argv, t_game *game)
 	init(&data, nb_lines);
 	fd = open(argv[1], O_RDONLY);
 	game->map = malloc(sizeof(char *) * nb_lines + 1);
-	if (!map)
-		return (NULL);
+	if (!game->map)
+		return ;
 	while (nb_lines-- > 0)
 	{
 		game->map[i] = get_line(fd, &data, i, game);
